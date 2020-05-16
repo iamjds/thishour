@@ -1,0 +1,7 @@
+{
+  "name": "thishour",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
