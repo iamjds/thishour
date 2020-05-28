@@ -15,14 +15,15 @@
 
   <ion-item>
     <ion-label>{{dayName}}</ion-label>
-    <ion-datetime selectedDate displayFormat="MM / DD / YYYY" pickerFormat="YYYY MMM DD" value="2020-05-16"
+    <ion-datetime displayFormat="MM / DD / YYYY" pickerFormat="YYYY MMM DD" [(ngModel)]="dateSelected"
       (ionChange)="dateChange($event)">
     </ion-datetime>
   </ion-item>
 
-  <ion-item *ngFor="let t of timeLabels">
-    <ion-label>{{t}}</ion-label>
-    <ion-input placeholder="what happened here?"></ion-input>
+  <ion-item *ngFor="let t of global.timeLabels">
+    <ion-label>{{t.slot}}</ion-label>
+    <ion-input placeholder="what happened here?" (ionInput)="saveInputChanges(t, dateSelected, $event)"
+      [ngModel]="t.details"></ion-input>
   </ion-item>
 
   <br />

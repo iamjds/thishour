@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, ViewChild, ElementRef } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { THGlobals } from '../app.global';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +9,62 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  dayName = 'Sunday';
+  dayName = '';
   dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  timeLabels = ['12:00am', '01:00am', '02:00am', '03:00am', '04:00am', '05:00am', '06:00am', '07:00am', '08:00am'];
+  dateSelected = new Date().toISOString();
 
-  @Input('working') dn: string;
-  @ViewChild('selectedDate', { read: ElementRef }) sd: ElementRef;
-
-  constructor(private storage: Storage) { }
-
-  // TODO: add event listener for saving changes
-  // @HostListener('')
+  constructor(private global: THGlobals, private storage: Storage) { }
 
   ngAfterViewInit() {
-    this.dayName = 'Wednesday';
+
+    this.getCurrentDay();
+    this.loadExistingDayData();
+
+    this.storage.ready().then(() => {
+      console.log('storage ready to go');
+    });
   }
 
-  dateChange(date) {
-    var dt = new Date(date.detail.value);
+  getCurrentDay() {
+    const currentDay = new Date(this.dateSelected).getDay();
+    this.dayName = this.dayNames[currentDay];
+  }
+
+  loadExistingDayData() {
+    const mdy = this.getStringDate(this.dateSelected);
+
+    this.global.timeLabels.forEach(_t => {
+      let slot = mdy + _t.slot.split(':').join('');
+
+      this.storage.get(slot).then((res) => {
+        _t.details = res || '';
+      })
+    });
+  }
+
+  dateChange(_date) {
+    var dt = new Date(_date.detail.value);
     this.dayName = this.dayNames[dt.getDay()];
+    this.loadExistingDayData();
+  }
+
+  saveInputChanges(_time, _date, _input) {
+    const mdyta = this.getStringDateTime(_date, _time.slot);
+
+    this.storage.set(mdyta, _input.currentTarget.value);
+  }
+
+  getStringDate(_date) {
+    const _month = ("0" + (new Date(_date).getMonth() + 1)).slice(-2)
+    const _day = ("0" + new Date(_date).getDate()).slice(-2);
+    const _year = new Date(_date).getFullYear().toString();
+
+    return _month + _day + _year;
+  }
+
+  getStringDateTime(_date, _time) {
+    const mdy = this.getStringDate(_date);
+    const _t = _time.split(':').join('');
+    return mdy + _t;
   }
 }
