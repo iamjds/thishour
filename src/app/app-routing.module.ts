@@ -11,6 +11,14 @@ const routes: Routes = [
     loadChildren: () => import('./analyze/analyze.module').then(m => m.AnalyzePageModule)
   },
   {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./help/help.module').then(m => m.HelpPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

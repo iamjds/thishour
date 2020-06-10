@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { AnalyzePageRoutingModule } from './analyze-routing.module';
-
 import { AnalyzePage } from './analyze.page';
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
   imports: [
@@ -15,6 +13,9 @@ import { AnalyzePage } from './analyze.page';
     IonicModule,
     AnalyzePageRoutingModule
   ],
-  declarations: [AnalyzePage]
+  declarations: [
+    MenuComponent,
+    AnalyzePage
+  ]
 })
-export class AnalyzePageModule {}
+export class AnalyzePageModule { }

@@ -1,20 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="main-content">
-    <ion-header>
-      <ion-toolbar [translucent]="true">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item href="analyze" routerDirection="forward">Analyze</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+  <app-menu></app-menu>
 
   <div class="ion-page" id="main-content">
     <ion-header [translucent]="true">
@@ -49,6 +34,12 @@
           </div>
         </ion-card-content>
       </ion-card>
+
+      <ion-content>
+        <ion-label></ion-label>
+        <ion-progress-bar></ion-progress-bar>
+      </ion-content>
+
 
     </ion-content>
   </div>

@@ -1,6 +1,7 @@
-import { Component, HostListener, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { THGlobals } from '../app.global';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomePage {
   dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   dateSelected = new Date().toISOString();
 
-  constructor(private global: THGlobals, private storage: Storage) { }
+  constructor(private global: THGlobals, private menu: MenuComponent, private storage: Storage) { }
 
   ngAfterViewInit() {
 

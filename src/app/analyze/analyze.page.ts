@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'hr-analyze',
@@ -9,7 +10,7 @@ export class AnalyzePage implements OnInit {
 
   missingSlotsPerRangeSelected = 23;
 
-  constructor() { }
+  constructor(private menu: MenuComponent) { }
 
   ngOnInit() {
 

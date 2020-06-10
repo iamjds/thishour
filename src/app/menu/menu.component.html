@@ -1,0 +1,23 @@
+<ion-menu side="start" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar [translucent]="true">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item href="home" routerDirection="back">
+        <ion-icon name="home-outline"></ion-icon><span class="menu-item-text-w-icon">Home</span>
+      </ion-item>
+      <ion-item href="analyze" routerDirection="forward">
+        <ion-icon name="flask-outline"></ion-icon><span class="menu-item-text-w-icon">Analyze</span>
+      </ion-item>
+      <ion-item href="settings" routerDirection="forward">
+        <ion-icon name="settings-outline"></ion-icon><span class="menu-item-text-w-icon">Settings</span>
+      </ion-item>
+      <ion-item href="help" routerDirection="forward">
+        <ion-icon name="information-circle-outline"></ion-icon><span class="menu-item-text-w-icon">Help</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

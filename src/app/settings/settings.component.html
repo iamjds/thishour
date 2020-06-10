@@ -1,0 +1,33 @@
+<ion-app>
+  <app-menu></app-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start" class="primary">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+          My Hours
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Pepperoni</ion-label>
+        <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sausage</ion-label>
+        <ion-toggle [(ngModel)]="sausage" disabled="true"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mushrooms</ion-label>
+        <ion-toggle [(ngModel)]="mushrooms"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-app>
